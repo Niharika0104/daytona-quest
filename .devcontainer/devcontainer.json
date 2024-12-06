@@ -23,5 +23,5 @@
       ]
     }
   },
-  "postCreateCommand": "npm install --unsafe-perm=true --allow-root && npx prisma generate"
+  "postCreateCommand": "npm install && npx prisma generate"
 }
