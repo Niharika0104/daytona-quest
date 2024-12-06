@@ -23,5 +23,5 @@
       ]
     }
   },
-  "postCreateCommand": "chown -R node:node /workspaces/daytona-quest && npm install && npx prisma generate"
+  "postCreateCommand": "chmod -R 777 /workspaces/daytona-quest && npm install && npx prisma generate"
 }
