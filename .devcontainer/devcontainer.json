@@ -23,5 +23,5 @@
       ]
     }
   },
-  "postCreateCommand": "npm install && npx prisma generate"
+  "postCreateCommand": "sudo npm install && sudo npx prisma generate"
 }
