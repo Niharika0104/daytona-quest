@@ -23,5 +23,5 @@
       ]
     }
   },
-  "postCreateCommand": "chmod -R 777 /workspaces/daytona-quest && npm install && npx prisma generate"
+  "postCreateCommand": "npm install --unsafe-perm=true --allow-root && npx prisma generate"
 }
