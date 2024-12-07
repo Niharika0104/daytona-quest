@@ -1,2 +1,2 @@
 tasks:
-  - init: devcontainer up
+  - init: gp init --devcontainer-path ./.devcontainer/devcontainer.json
