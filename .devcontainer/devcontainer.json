@@ -1,28 +1,16 @@
 {
   "name": "Bloggo Dev Container",
   "image": "mcr.microsoft.com/devcontainers/javascript-node",
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "files.autoSave": "onWindowChange",
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      },
-      "extensions": [
-        "ms-azuretools.vscode-docker",
-        "ms-vscode-remote.remote-containers",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "dsznajder.es7-react-js-snippets",
-        "formulahendry.auto-rename-tag",
-        "bradlc.vscode-tailwindcss",
-        "christian-kohler.path-intellisense",
-        "ms-vscode.vscode-typescript-next"
-      ]
-    }
-  },
-  "postCreateCommand": "sudo npm install && sudo npx prisma generate && npm run dev",
+"customizations": {
+  "vscode": {
+    "extensions": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss"
+    ]
+  }
+},
+  "postCreateCommand": "npm install && npx prisma generate && npm run dev",
   "forwardPorts": [
     3000
   ]
