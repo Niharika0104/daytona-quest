@@ -1,7 +1,6 @@
 {
   "name": "Bloggo Dev Container",
   "image": "mcr.microsoft.com/devcontainers/javascript-node",
-  "forwardPorts": [3000],
   "customizations": {
     "vscode": {
       "settings": {
@@ -23,5 +22,8 @@
       ]
     }
   },
-  "postCreateCommand": "sudo npm install && sudo npx prisma generate"
+  "postCreateCommand": "sudo npm install && sudo npx prisma generate && npm run dev",
+  "forwardPorts": [
+    3000
+  ]
 }

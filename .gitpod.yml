@@ -1,2 +1,3 @@
 tasks:
-  - init: gp init --devcontainer-path ./.devcontainer/devcontainer.json
+  - name: Setup
+    init:  npm install -g @devcontainers/cli && devcontainer build --workspace-folder .
