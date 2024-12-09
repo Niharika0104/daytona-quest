@@ -41,7 +41,14 @@ These are the steps required to install/run the project.
     MINDS_URL=<minds url>
     BASE_URL=<application url>
     ```
-  for easy postgres db set up,go to aiven and get a db for testing purpose
+###### 🍀for easy postgres db set up,go to aiven and get a db for testing purpose
+🍀**🚀To get Api key from MindsDB follow these steps:**
+- Go to https://mdb.ai/minds and create a new account if you don't have an existing account on MindsDB.
+- Go to the ApiKeys section and generate a new ApiKey and now you are good to go.
+![image](https://github.com/user-attachments/assets/a78fb143-8abd-4907-b3be-25a044fe1a27)
+
+In order to integrate the ai in this project refer to this blog:[mindsdb-integrate-aiml-models-into-your-applications](https://dev.to/niharikaa/mindsdb-integrate-aiml-models-into-your-applications-4oc7)
+
 ## Work in Progress
 
 This project is still under active development. Feel free to contribute or check back later for updates.
