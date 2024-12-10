@@ -1,3 +1,0 @@
-tasks:
-  - name: Setup
-    init:  npm install -g @devcontainers/cli && devcontainer up --workspace-folder .
