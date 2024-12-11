@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const request: Body = await req.json();
 
     const response = await fetch(
-      'https://probable-space-rotary-phone-7q6vpjg4457hpr4g-47334.app.github.dev/api/projects/mindsdb/models/blog_helper/predict',
+      `${process.env.MINDS_URL}/api/projects/mindsdb/models/blog_helper/predict`,
       {
         method: "POST",
         headers: {
