@@ -1,57 +1,116 @@
-<h1>BLOG APPLICATION</h1>
+# Blogging Application <TS/NextJS>
 
 <p>
 
-This application leverages MindsDB to deliver intelligent chat assistance and automatically categorize each post into specific categories. Users can view all posts, comment on them, like their favorites, and create new posts. The app uses token-based authentication to ensure secure access and interactions. Additionally, users have the ability to report posts, helping to maintain content quality and compliance with community standards.
+This application leverages MindsDB to deliver intelligent chat assistance. Users can view all posts, like their favorites, and create new posts. The app uses token-based authentication to ensure secure access and interactions. Additionally, users have the ability to report posts, helping to maintain content quality and compliance with community standards.
 
 </p>
-<hr>
 
-## Tech Stack
+---
 
-- **Frontend:** NextJs, Tailwind CSS
-- **Backend:** Next Js
-- **Database:** Postgres DB
+## 🚀 Getting Started  
 
-## Video Demonstration
+### Open Using Daytona  
 
+1. **Install Daytona**: Follow the [Daytona installation guide](https://www.daytona.io/docs/installation/installation/).  
+2. **Create the Workspace**:  
+   ```bash  
+   daytona create https://github.com/Niharika0104/daytona-quest
+   ```  
+
+4. **Start the Application**:  
+   ```bash  
+      npm run dev
+   ```  
+5. **Create an .env folder in your root level of application by following env.sample**
+
+   ```
+   DATABASE_URL=<postgresdburl>
+   SECRET_KEY=<secretkey>
+   MINDSDB_KEY=<mindsdbapikey>
+   BASE_URL=http://localhost:3000
+   MINDS_URL=http://localhost:47334
+   ```
+   To know how to get mindsdb_key refer to this blog : [https://dev.to/niharikaa/mindsdb-integrate-aiml-models-into-your-applications-4oc7](https://dev.to/niharikaa/mindsdb-integrate-aiml-models-into-your-applications-4oc7)
+   To get databaseurl real quick go to aiven and get an postgres db instance.
+7. **You can see that on port 47334 minds db editor is running,just run these models by going /editor route**
+   ```
+   CREATE ML_ENGINE minds_endpoint_engine
+   FROM minds_endpoint
+   USING
+   minds_endpoint_api_key = 'ebcb57d05ebccdbcd2e75901902f7d2b8254c2a57f474c5e255117f69286a8cc';
+   CREATE MODEL blog_helper
+   PREDICT output
+   USING
+   engine = 'minds_endpoint_engine',
+   max_tokens = 800,
+   model_name = 'mistral-7b',
+   prompt_template = 'You are an AI-powered data retrieval assistant. I will provide you with a query about a specific topic. Your task is to retrieve relevant information 
+   and provide a detailed, accurate, and informative response. The response should be structured as follows:
+
+    - **Topic Overview**: A brief overview of the topic.
+    - **Details**: Detailed information related to the query.
+    - **Sources**: Any sources or references where the information can be verified.
+
+    Ensure that the response is informative and comprehensive, formatted using Markdown.
+
+    Here is the query:
+
+    {{query}}
+
+    ';
+
+     CREATE MODEL topic_classifier_model
+    PREDICT topic
+    USING
+    engine = 'minds_endpoint_engine',
+    prompt_template = '
+    Classify the given review into one of the following topics:
+    Software Engineering, Machine Learning, Art, Photography, Dance, Culinary, Data Science, Cybersecurity, Astronomy, Physics, Chemistry, Biology, Mathematics, 
+    Philosophy, Psychology, History, Geography, Literature, Linguistics, Political Science, Economics, Environmental Science, Sociology, Anthropology, Archaeology, 
+    Engineering, Robotics, Artificial Intelligence, Game Development, Web Development, Mobile App Development, Blockchain Technology, Quantum Computing, Music, Theater, 
+   Film Studies, Graphic Design, Interior Design, Fashion Design, Architecture, Ecology, Genetics, Marine Biology, Astronautics, Neuroscience, Immunology, Forensic 
+   Science, Biotechnology, Agriculture, Veterinary Science, Renewable Energy, Urban Planning, Transportation Engineering, Material Science, Sports Science, Education, 
+   Psychiatry, Public Health, Human Resources, Marketing, Journalism, Creative Writing, Comedy, Television Production, Animation, Sound Engineering, Tourism, Hospitality 
+   Management, Event Planning, Horticulture.
+   The review is: "{{post}}"
+   The topic is:';
+
+    SELECT *
+    FROM blog_helper  
+    WHERE query = 'What is a Chip?';
+
+   SELECT *
+   FROM topic_classifier_model  
+   WHERE post = 'Chromatin immunoprecipitation, or ChIP, is an antibody-based technology used to selectively enrich specific DNA-binding proteins along with their DNA 
+   targets. ChIP is used to investigate a particular protein-DNA interaction, several protein-DNA interactions, or interactions across the whole genome or a subset of 
+    genes.';
+   
+   ```
+
+
+8. **Now you are good to go🚀**
+
+## ✨ Features
+- Create a post
+- Report a post
+- It has ai assistance using which we can quickly get quick assistance in articulating our posts.
+- Like a post
+- Segmentation is happening on the backend frontend implementation is yet to be done
+- Follow author
+- Authentication and Authorization is enabled.Users with admin right have privileged rights.
+
+
+## Previews
+
+![image](https://github.com/user-attachments/assets/8a218ef7-b3b4-47d4-a599-a782d07cf817)
+![image](https://github.com/user-attachments/assets/c8f21fc6-d80a-468e-b9c3-f04d3e70cc5f)
+![image](https://github.com/user-attachments/assets/d273de7c-65f7-471b-8642-18150c22c2fe)
+![image](https://github.com/user-attachments/assets/8d14bf91-aae2-4085-a543-445dff7eb37c)
+![image](https://github.com/user-attachments/assets/a3921046-34af-49f3-af56-59c16b16a08b)
 [Watch my Loom video](https://www.loom.com/share/999e9aaeb32940739632c095bdcb16aa?sid=c76806a1-f328-498f-9986-889378fb2568)
 
-## Setup and Contributions Guidelines
 
-$~$
-
-## :outbox_tray: Set up
-
-These are the steps required to install/run the project.
-
-## Let's use daytona to run this project locally:
-
-- Install daytona from this [link](https://www.daytona.io/docs/installation/installation/)
-- Run this command `daytona serve` this will create a local server for you.
-- Run this command  `daytona create <repo_link>`
-
-## Now let's create .env file:**
-**Create `.env` file in the root folder:**
-
-    ```bash
-     DATABASE_URL=<YOUR_POSTGRES_dB_URL>"
-    SECRET_KEY=<your secret key>
-    MINDSDB_KEY=<your api key>
-    MINDS_URL=<minds url>
-    BASE_URL=<application url>
-    ```
-###### 🍀for easy postgres db set up,go to aiven and get a db for testing purpose
-🍀**🚀To get Api key from MindsDB follow these steps:**
-- Go to https://mdb.ai/minds and create a new account if you don't have an existing account on MindsDB.
-- Go to the ApiKeys section and generate a new ApiKey and now you are good to go.
-![image](https://github.com/user-attachments/assets/a78fb143-8abd-4907-b3be-25a044fe1a27)
-
-In order to integrate the ai in this project refer to this blog:[mindsdb-integrate-aiml-models-into-your-applications](https://dev.to/niharikaa/mindsdb-integrate-aiml-models-into-your-applications-4oc7)
-
-## Work in Progress
-
-This project is still under active development. Feel free to contribute or check back later for updates.
 
 
 
