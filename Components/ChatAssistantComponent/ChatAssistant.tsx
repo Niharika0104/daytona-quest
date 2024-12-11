@@ -24,9 +24,9 @@ export default function ChatAssistant() {
             const response = await axios.post('/api/ai/data', {
                 query: query
             });
-            console.log(response.data.response[0].output);
+           console.log(response)
             // Add AI response to conversation
-            setConversation(prev => [...prev, { type: 'ai', text: response.data.response[0].output }]);
+            setConversation(prev => [...prev, { type: 'ai', text: response?.data?.response[0]?.output }]);
         } catch (error) {
             console.error("Error fetching AI response:", error);
             setConversation(prev => [...prev, { type: 'ai', text: "Error fetching response" }]);

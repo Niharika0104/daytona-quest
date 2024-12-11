@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
         })
       }
     );
+    console.log(response)
 
     const newPost = await response.json();
 

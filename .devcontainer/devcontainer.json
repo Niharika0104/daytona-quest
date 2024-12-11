@@ -1,17 +1,19 @@
 {
   "name": "Bloggo Dev Container",
   "image": "mcr.microsoft.com/devcontainers/javascript-node",
-"customizations": {
-  "vscode": {
-    "extensions": [
-      "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode",
-      "bradlc.vscode-tailwindcss"
-    ]
-  }
-},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
   "postCreateCommand": "npm install && npx prisma generate && npm run dev",
+  "postStartCommand": "docker run --name mindsdb_container -p 47334:47334 -d mindsdb/mindsdb || echo 'MindsDB container already running or exists.'",
   "forwardPorts": [
-    3000
+    3000,
+    47334
   ]
 }

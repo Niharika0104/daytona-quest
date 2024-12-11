@@ -25,8 +25,8 @@ const imageExtracter=(content:string)=>{
     
     // Select all img elements in the parsed document
     const imgElements = doc.querySelectorAll('img');
-    console.log(imgElements[0].getAttribute('src'))
-    return imgElements[0].getAttribute('src');
+    console.log(imgElements[0]?.getAttribute('src'))
+    return imgElements[0]?.getAttribute('src');
 }
 interface SearchInformation{
     dataset?:PostInfo[]
