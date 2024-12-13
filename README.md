@@ -54,7 +54,7 @@ This application leverages MindsDB to deliver intelligent chat assistance. Users
 
 
 5. **You can see that on port 47334 minds db editor is running,just run these models by going /editor route**
-   ```
+   ```sql
    CREATE ML_ENGINE minds_endpoint_engine
    FROM minds_endpoint
    USING
