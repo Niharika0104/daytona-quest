@@ -1,10 +1,6 @@
 {
   "name": "Bloggo Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node",
-  "forwardPorts": [
-    3000,
-    47334
-  ],
+  "image":"mcr.microsoft.com/devcontainers/javascript-node",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,7 +10,16 @@
       ]
     }
   },
-  "postCreateCommand": "npm install && npx prisma generate && npm run dev",
-  "postStartCommand": "docker run --name mindsdb_container -p 47334:47334 -d mindsdb/mindsdb || echo 'MindsDB container already running or exists.'"
+  "features": {
+    "docker-in-docker": "latest"
+  },
+ "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "postCreateCommand": ".devcontainer/minds_start.sh",
+  "forwardPorts": [47334] 
+ 
+
+  
   
 }
