@@ -10,15 +10,13 @@
       ]
     }
   },
-  "features": {
-    "docker-in-docker": "latest"
-  },
- "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+"mounts": [
+  "source=/Users/niharikagoulikar/.colima/default/docker.sock,target=/var/run/docker.sock,type=bind"
+
   ],
-  "postCreateCommand": ".devcontainer/minds_start.sh",
+  "postCreateCommand": "curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && chmod +x .devcontainer/minds_start.sh && .devcontainer/minds_start.sh",
+
   "forwardPorts": [47334] 
- 
 
   
   
